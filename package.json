@@ -1,0 +1,36 @@
+{
+    "name": "manjunathan-website",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.11.3",
+        "@emotion/styled": "^11.11.0",
+        "@headlessui/react": "^1.7.17",
+        "@tailwindcss/forms": "^0.5.7",
+        "@tailwindcss/postcss": "^4.0.12",
+        "@tailwindcss/typography": "^0.5.16",
+        "framer-motion": "^10.18.0",
+        "next": "^14.0.4",
+        "next-themes": "^0.2.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-icons": "^4.12.0",
+        "react-intersection-observer": "^9.5.3",
+        "react-markdown": "^10.1.0",
+        "recharts": "^2.10.3",
+        "ts-dedent": "^2.2.0"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.21",
+        "eslint": "8.55.0",
+        "eslint-config-next": "14.0.4",
+        "postcss": "^8.5.3",
+        "tailwindcss": "^3.4.17"
+    }
+}
