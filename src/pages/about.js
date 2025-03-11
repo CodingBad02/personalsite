@@ -11,7 +11,7 @@ const SpotifyNowPlaying = () => {
     <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg flex items-center justify-center">
       {/* Adjust localhost:5000 to wherever your Flask server is running */}
       <img 
-        src="http://127.0.0.1:5000/now-playing" 
+        src="https://codingbad02.pythonanywhere.com/now-playing" 
         alt="Spotify Now Playing" 
         className="w-full max-w-xs md:max-w-sm lg:max-w-md rounded shadow"
       />
