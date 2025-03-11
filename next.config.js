@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: 'export'    // Use if deploying under a repo subpath
+  // Output export removed to enable API routes
 };
 
 module.exports = nextConfig;

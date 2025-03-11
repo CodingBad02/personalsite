@@ -26,7 +26,7 @@ const ProjectCard = ({ project, index }) => {
     >
       <div className="relative overflow-hidden h-48">
         <img
-          src={image || "/images/projects/placeholder.jpg"}
+          src={image || `/images/projects/${title.toLowerCase().replace(/\s+/g, '')}.jpg`}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />

@@ -54,9 +54,22 @@ const About = () => {
               <div className="space-y-4">
                 <div>
                   <h3 className="text-xl font-medium mb-2">Badminton</h3>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <p className="text-gray-600 dark:text-gray-400 mb-4">
                     I'm an avid badminton player, hitting the courts at least twice a week. The sport has taught me quick decision-making, agility, and the importance of strategy - skills that translate well into my professional life.
                   </p>
+                  <a 
+                    href="https://open.turftown.in/player/6422fb760aed8ea06016cf11"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+                  >
+                    <img 
+                      src="/images/turftown-logo.png" 
+                      alt="TurfTown" 
+                      className="w-5 h-5" 
+                    />
+                    Play with me on TurfTown
+                  </a>
                 </div>
                 
                 <div>

@@ -7,7 +7,7 @@ const ContactForm = () => {
     name: '',
     email: '',
     subject: '',
-    message: '',
+    message: ''
   });
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
 
@@ -23,17 +23,26 @@ const ContactForm = () => {
     e.preventDefault();
     setStatus('loading');
     
-    // This is a simulation - in a real app, you'd send the data to your backend
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      console.log('Form submitted:', formData);
+      // Send form data to your email service
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
+      
       setStatus('success');
       setFormData({
         name: '',
         email: '',
         subject: '',
-        message: '',
+        message: ''
       });
       
       // Reset form status after 3 seconds
