@@ -63,11 +63,10 @@ const About = () => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
                   >
-                    <img 
-                      src="/images/turftown-logo.png" 
-                      alt="TurfTown" 
-                      className="w-5 h-5" 
-                    />
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="10" fill="#ffffff" />
+                      <path d="M8 12L10.5 14.5L16 9" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                     Play with me on TurfTown
                   </a>
                 </div>
