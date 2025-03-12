@@ -6,10 +6,8 @@ import { FiMusic, FiAward, FiUser, FiHeart } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 
 const SpotifyNowPlaying = () => {
-  // Replace the static content with an <img> pointing to your Flask endpoint
   return (
     <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg flex items-center justify-center">
-      {/* Adjust localhost:5000 to wherever your Flask server is running */}
       <img 
         src="https://codingbad02.pythonanywhere.com/now-playing" 
         alt="Spotify Now Playing" 
@@ -34,13 +32,13 @@ const About = () => {
           <div className="md:col-span-2 space-y-6">
             <div className="prose dark:prose-invert max-w-none">
               <p className="mb-4 text-lg">
-                I'm Manjunathan Radhakrishnan, a passionate Machine Learning Engineer and Researcher with a background in Electronics and Communication Engineering from Sri Sivasubramaniya Nadar College of Engineering (CGPA: 9.02/10). My expertise spans advanced computer vision, distributed training frameworks, and cloud-agnostic ML solutions.
+                Here's the deal: You can't outrun the AI revolution. Large Language Models and cutting-edge tech evolve faster than you can blink, shredding yesterday's machine learning playbook. Is that game over for us? Absolutely Goddamn not (Harvey Specter - Suits) —it's just getting started!
               </p>
               <p className="mb-4 text-lg">
-                I have contributed both in academic research and in industry projects – from developing modified YOLO architectures for ship detection to building agentic platforms at Mad Street Den (Vue.ai). My work reflects a commitment to innovation, efficiency, and impactful technological solutions.
+                I'm Manjunathan Radhakrishnan, a Machine Learning Engineer and Researcher who thrives in this chaos. With a degree in Electronics and Communication Engineering from Sri Sivasubramaniya Nadar College of Engineering (CGPA: 9.02/10), I've got the backdrop and base knowledge to back it up. My battleground? Advanced computer vision, distributed training frameworks, and cloud-agnostic ML solutions - with a keen interest on designing efficient systems, hardware software hand in hand. I've built modified YOLO architectures to spot ships like a hawk and engineered agentic platforms at Mad Street Den (Vue.ai) that redefine what's possible. Innovation, efficiency, impact—that's my creed.
               </p>
-              <p className="text-lg">
-                With a solid technical foundation and a drive to continuously learn and push boundaries, I am excited to tackle new challenges and collaborate on cutting-edge projects.
+              <p className="mb-4 text-lg">
+                The rapid pace of AI isn't a hurdle; it's my adrenaline. I design systems, tweak models, and turn wild ideas into reality, whether it's scaling architectures or fine-tuning solutions that actually work. With a couple of years under my belt and a hunger to push limits, I'm here to tackle the toughest challenges and shape a future that doesn't just arrive—it dominates.
               </p>
             </div>
             
@@ -55,18 +53,19 @@ const About = () => {
                 <div>
                   <h3 className="text-xl font-medium mb-2">Badminton</h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-4">
-                    I'm an avid badminton player, hitting the courts at least twice a week. The sport has taught me quick decision-making, agility, and the importance of strategy - skills that translate well into my professional life.
+                    I don't just play badminton—I dominate the court. Smashing it at least twice a week, I've honed lightning-fast reflexes, ninja-level agility, and a killer strategic mind. These aren't just game skills; they're the edge I bring to every project, slicing through problems with precision.
                   </p>
                   <a 
                     href="https://open.turftown.in/player/6422fb760aed8ea06016cf11"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="12" r="10" fill="#ffffff" />
-                      <path d="M8 12L10.5 14.5L16 9" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
+                    <img 
+                      src="/images/turftown-logo.png" 
+                      alt="TurfTown Logo" 
+                      className="w-5 h-5"
+                    />
                     Play with me on TurfTown
                   </a>
                 </div>
@@ -74,14 +73,25 @@ const About = () => {
                 <div>
                   <h3 className="text-xl font-medium mb-2">Fitness</h3>
                   <p className="text-gray-600 dark:text-gray-400">
-                    Working out is an essential part of my routine. I follow a split training regimen focusing on different muscle groups each day. The discipline and consistency required in fitness mirrors the approach I take in my work.
+                    Fitness isn't a pastime—it's my forge. I hammer out a split training regimen, crushing different muscle groups daily. The discipline? Unbreakable. The consistency? Relentless. It's the same grit I bring to my work, sculpting solutions as strong as my gains.
                   </p>
+                  <a 
+                    href="https://open.spotify.com/playlist/5L4B4a7wcyBt7t7bmXK5A7?si=cCCRViGeSyym1RIs1nHmfA&pi=_yIR6iDiSRORQ"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-[#1DB954] text-white rounded-lg hover:bg-[#1AA34A] transition-colors"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#ffffff">
+                      <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                    </svg>
+                    My Gym Playlist
+                  </a>
                 </div>
                 
                 <div>
                   <h3 className="text-xl font-medium mb-2">Music</h3>
                   <p className="text-gray-600 dark:text-gray-400">
-                    I have a diverse taste in music, ranging from classic rock to modern hip-hop and R&B. Music helps me focus during coding sessions and unwind after a long day.
+                    My playlist is a weapon—classic rock to hip-hop and R&B, I wield it all. It's the fuel that keeps me locked in during marathon coding sessions and the release that resets me after slaying the day. Music doesn't just play; it powers my grind.
                   </p>
                 </div>
               </div>
@@ -97,19 +107,19 @@ const About = () => {
               <ul className="space-y-3">
                 <li className="flex">
                   <span className="text-primary-light dark:text-primary-dark mr-2">•</span>
-                  Winner of MADHACK 24, building an innovative ML solution for healthcare
+                  Crushed it at MADHACK 24, delivering an ML healthcare solution that owned the competition.
                 </li>
                 <li className="flex">
                   <span className="text-primary-light dark:text-primary-dark mr-2">•</span>
-                  Smart India Hackathon finalist - Developed an IoT-based gait analysis system
+                  Smart India Hackathon finalist—built an IoT gait analysis system that rewrote the rules.
                 </li>
                 <li className="flex">
                   <span className="text-primary-light dark:text-primary-dark mr-2">•</span>
-                  IEEE Catalyst award for research on Graph Convolutional Networks
+                  Snagged the IEEE Catalyst award for groundbreaking Graph Convolutional Network research.
                 </li>
                 <li className="flex">
                   <span className="text-primary-light dark:text-primary-dark mr-2">•</span>
-                  Scholarship recipient for academic excellence at SSNCE
+                  Locked down a scholarship at SSNCE for straight-up academic dominance.
                 </li>
               </ul>
             </div>
