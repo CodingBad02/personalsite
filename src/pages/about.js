@@ -4,6 +4,7 @@ import Head from 'next/head';
 import MainLayout from '../layouts/MainLayout';
 import { FiMusic, FiAward, FiUser, FiHeart } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import ResumePDF from '../components/ResumePDF';
 
 const SpotifyNowPlaying = () => {
   return (
@@ -45,15 +46,16 @@ const About = () => {
             {/* Personal Interests */}
             <div className="card p-6">
               <div className="flex items-center mb-4">
-                <FiHeart className="h-6 w-6 text-primary-light dark:text-primary-dark mr-2" />
+                <div className="flex-shrink-0 mr-3 flex items-center justify-center w-8 h-9">
+                  <FiHeart className="h-6 w-6 text-primary-light dark:text-primary-dark" />
+                </div>
                 <h2 className="text-2xl font-bold">Personal Interests</h2>
               </div>
-              
               <div className="space-y-4">
                 <div>
                   <h3 className="text-xl font-medium mb-2">Badminton</h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-4">
-                    I don't just play badminton—I dominate the court. Smashing it at least twice a week, I've honed lightning-fast reflexes, ninja-level agility, and a killer strategic mind. These aren't just game skills; they're the edge I bring to every project, slicing through problems with precision.
+                    I'm passionate about badminton and play at least twice a week. The sport has helped me develop quick reflexes, agility, and strategic thinking. These skills translate well to my professional work, where I approach problems with focus and precision.
                   </p>
                   <a 
                     href="https://open.turftown.in/player/6422fb760aed8ea06016cf11"
@@ -73,7 +75,7 @@ const About = () => {
                 <div>
                   <h3 className="text-xl font-medium mb-2">Fitness</h3>
                   <p className="text-gray-600 dark:text-gray-400">
-                    Fitness isn't a pastime—it's my forge. I hammer out a split training regimen, crushing different muscle groups daily. The discipline? Unbreakable. The consistency? Relentless. It's the same grit I bring to my work, sculpting solutions as strong as my gains.
+                    Fitness is an important part of my daily routine. I follow a split training program focusing on different muscle groups each day. The discipline and consistency I've developed through my fitness journey are values I bring to my professional work as well.
                   </p>
                   <a 
                     href="https://open.spotify.com/playlist/5L4B4a7wcyBt7t7bmXK5A7?si=cCCRViGeSyym1RIs1nHmfA&pi=_yIR6iDiSRORQ"
@@ -91,35 +93,37 @@ const About = () => {
                 <div>
                   <h3 className="text-xl font-medium mb-2">Music</h3>
                   <p className="text-gray-600 dark:text-gray-400">
-                    My playlist is a weapon—classic rock to hip-hop and R&B, I wield it all. It's the fuel that keeps me locked in during marathon coding sessions and the release that resets me after slaying the day. Music doesn't just play; it powers my grind.
+                    Music is an essential part of my life. I enjoy a diverse range from classic rock to hip-hop and R&B. It helps me focus during long coding sessions and provides a welcome break to recharge after a productive day of work.
                   </p>
                 </div>
               </div>
             </div>
             
             {/* Awards Section */}
-            <div className="card p-6" id="awards">
+            <div className="card p-6">
               <div className="flex items-center mb-4">
-                <FiAward className="h-6 w-6 text-primary-light dark:text-primary-dark mr-2" />
-                <h2 className="text-2xl font-bold">Awards & Achievements</h2>
+                <div className="flex items-center justify-center w-8 h-8 flex-shrink-0">
+                  <FiAward className="h-6 w-6 text-primary-light dark:text-primary-dark" aria-hidden="true" />
+                </div>
+                <h2 className="text-2xl font-bold ml-2">Awards & Recognition</h2>
               </div>
               
               <ul className="space-y-3">
                 <li className="flex">
                   <span className="text-primary-light dark:text-primary-dark mr-2">•</span>
-                  Crushed it at MADHACK 24, delivering an ML healthcare solution that owned the competition.
+                  <span>Winner at MADHACK 24, delivering an innovative ML healthcare solution that addressed critical medical challenges.</span>
                 </li>
                 <li className="flex">
                   <span className="text-primary-light dark:text-primary-dark mr-2">•</span>
-                  Smart India Hackathon finalist—built an IoT gait analysis system that rewrote the rules.
+                  <span>Smart India Hackathon finalist—developed an IoT-based gait analysis system for medical applications.</span>
                 </li>
                 <li className="flex">
                   <span className="text-primary-light dark:text-primary-dark mr-2">•</span>
-                  Snagged the IEEE Catalyst award for groundbreaking Graph Convolutional Network research.
+                  <span>Received the IEEE Catalyst award for research on Graph Convolutional Networks and their applications.</span>
                 </li>
                 <li className="flex">
                   <span className="text-primary-light dark:text-primary-dark mr-2">•</span>
-                  Locked down a scholarship at SSNCE for straight-up academic dominance.
+                  <span>Awarded academic scholarship at SSNCE for consistent excellence in coursework and research.</span>
                 </li>
               </ul>
             </div>
@@ -154,40 +158,14 @@ const About = () => {
               </div>
             </motion.div>
             
-            {/* Now Playing */}
-            <motion.div 
-              className="card p-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
+            {/* Resume Section */}
+            <ResumePDF />
+            
+            {/* Spotify Now Playing Section */}
+            <div className="card p-6 mb-6">
               <h3 className="text-xl font-bold mb-4">Now Playing  🎧</h3>
               <SpotifyNowPlaying />
-            </motion.div>
-            
-            {/* Gallery */}
-            <motion.div 
-              className="card p-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <h3 className="text-xl font-bold mb-4">Photo Gallery</h3>
-              <div className="grid grid-cols-2 gap-2">
-                <div className="aspect-square rounded-lg overflow-hidden">
-                  <img src="/images/gallery/badminton.jpg" alt="Playing badminton" className="w-full h-full object-cover hover:scale-110 transition-transform duration-300" />
-                </div>
-                <div className="aspect-square rounded-lg overflow-hidden">
-                  <img src="/images/gallery/workout.jpg" alt="At the gym" className="w-full h-full object-cover hover:scale-110 transition-transform duration-300" />
-                </div>
-                <div className="aspect-square rounded-lg overflow-hidden">
-                  <img src="/images/gallery/coding.jpg" alt="Coding session" className="w-full h-full object-cover hover:scale-110 transition-transform duration-300" />
-                </div>
-                <div className="aspect-square rounded-lg overflow-hidden">
-                  <img src="/images/gallery/hiking.jpg" alt="Hiking" className="w-full h-full object-cover hover:scale-110 transition-transform duration-300" />
-                </div>
-              </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

@@ -37,6 +37,7 @@ const Navbar = () => {
     { name: 'Projects', path: '/projects' },
     { name: 'Publications', path: '/publications' },
     { name: 'Skills', path: '/skills' },
+    { name: 'Releases', path: '/releases' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -50,7 +51,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 md:px-6">
         <nav className="flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold gradient-text">
+          <Link href="/" className="text-2xl font-bold gradient-text mr-8">
             Manjunathan
           </Link>
 

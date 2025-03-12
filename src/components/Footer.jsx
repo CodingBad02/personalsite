@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import BuyMeAChai from './BuyMeAChai';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,6 +9,11 @@ const Footer = () => {
   return (
     <footer className="bg-surface-light dark:bg-surface-dark py-8">
       <div className="container mx-auto px-4">
+        {/* Buy Me a Chai Section */}
+        <div className="mb-8">
+          <BuyMeAChai />
+        </div>
+      
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <div className="text-2xl font-bold gradient-text mb-2">Manjunathan R</div>
@@ -26,6 +32,9 @@ const Footer = () => {
             </Link>
             <Link href="/projects" className="hover:text-primary-light dark:hover:text-primary-dark transition-colors">
               Projects
+            </Link>
+            <Link href="/releases" className="hover:text-primary-light dark:hover:text-primary-dark transition-colors">
+              Releases
             </Link>
             <Link href="/contact" className="hover:text-primary-light dark:hover:text-primary-dark transition-colors">
               Contact
