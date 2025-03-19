@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
         {/* Google Fonts */}
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
         {/* Umami Analytics */}
-        <script async defer data-website-id="YOUR-UMAMI-WEBSITE-ID" src="https://your-umami-instance.com/umami.js"></script>
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="7713b8c5-ec0e-495a-bf71-635053830cc3"></script>
       </Head>
       <AnalyticsWrapper>
         <Component {...pageProps} />
