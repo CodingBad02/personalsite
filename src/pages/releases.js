@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import { FiGift, FiClock, FiCheckCircle, FiAlertCircle, FiArrowUp } from 'react-icons/fi';
+import { FiGift, FiClock, FiCheckCircle, FiAlertCircle, FiArrowUp, FiShield } from 'react-icons/fi';
 import MainLayout from '../layouts/MainLayout';
 import releasesData from '../data/releases';
 
@@ -102,6 +102,8 @@ const ReleaseNotes = () => {
                                 ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200'
                                 : change.type === 'improvement'
                                 ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200'
+                                : change.type === 'security'
+                                ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200'
                                 : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200'
                               }
                             `}>

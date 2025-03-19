@@ -2,9 +2,12 @@
 
 const releasesData = {
   current: {
-    version: "1.1.0",
-    date: "May 2024",
+    version: "1.2.0",
+    date: "March 2025",
     features: [
+      "Umami Analytics integration for privacy-focused visitor tracking",
+      "Enhanced contact form with Google reCAPTCHA protection",
+      "Anti-spam measures including rate limiting and honeypot fields",
       "Individual domain radar charts for skill visualization",
       "Interactive 3D particle background animation",
       "Dynamic skills visualization with spider/radar chart",
@@ -12,13 +15,13 @@ const releasesData = {
       "Responsive design for all screen sizes",
       "Project showcase with expandable details",
       "Experience timeline with interactive company selection",
-      "Spotify Now Playing integration",
+      "Spotify Now Playing integration via PythonAnywhere Backend",
       "Smooth page transitions and animations"
     ]
   },
   upcoming: {
-    version: "1.2.0",
-    plannedDate: "June 2024",
+    version: "1.3.0",
+    plannedDate: "May 2025",
     features: [
       "Blog section for technical articles and tutorials",
       "Interactive project demos",
@@ -31,8 +34,30 @@ const releasesData = {
   },
   changelog: [
     {
+      version: "1.2.0",
+      date: "March 2025",
+      changes: [
+        {
+          type: "feature",
+          description: "Integrated Umami Analytics for privacy-focused visitor tracking"
+        },
+        {
+          type: "feature",
+          description: "Added Google reCAPTCHA protection to the contact form"
+        },
+        {
+          type: "security",
+          description: "Implemented multiple anti-spam measures: rate limiting and honeypot fields"
+        },
+        {
+          type: "improvement",
+          description: "Enhanced error handling throughout the application"
+        }
+      ]
+    },
+    {
       version: "1.1.0",
-      date: "May 2024",
+      date: "March 2025",
       changes: [
         {
           type: "feature",
@@ -50,7 +75,7 @@ const releasesData = {
     },
     {
       version: "1.0.0",
-      date: "March 2024",
+      date: "March 2025",
       changes: [
         {
           type: "feature",
@@ -72,7 +97,7 @@ const releasesData = {
     },
     {
       version: "0.9.0",
-      date: "February 2024",
+      date: "February 2025",
       changes: [
         {
           type: "feature",
