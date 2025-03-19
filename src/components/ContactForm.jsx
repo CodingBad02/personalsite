@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FiSend, FiCheck, FiAlertTriangle } from 'react-icons/fi';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    _gotcha: '' // Honeypot field
   });
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
+  const [captchaError, setCaptchaError] = useState(false);
+  const recaptchaRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,6 +25,15 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setCaptchaError(false);
+    
+    // Verify reCAPTCHA
+    const captchaToken = recaptchaRef.current.getValue();
+    if (!captchaToken) {
+      setCaptchaError(true);
+      return;
+    }
+    
     setStatus('loading');
     
     try {
@@ -30,7 +43,10 @@ const ContactForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          captchaToken
+        }),
       });
       
       if (!response.ok) {
@@ -42,8 +58,12 @@ const ContactForm = () => {
         name: '',
         email: '',
         subject: '',
-        message: ''
+        message: '',
+        _gotcha: ''
       });
+      
+      // Reset reCAPTCHA
+      recaptchaRef.current.reset();
       
       // Reset form status after 3 seconds
       setTimeout(() => {
@@ -70,6 +90,20 @@ const ContactForm = () => {
       <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
       
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Honeypot field - invisible to humans but bots will fill it */}
+        <div style={{ display: 'none' }}>
+          <label htmlFor="_gotcha">Leave this empty</label>
+          <input
+            type="text"
+            id="_gotcha"
+            name="_gotcha"
+            value={formData._gotcha}
+            onChange={handleChange}
+            tabIndex="-1"
+            autoComplete="off"
+          />
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -134,6 +168,18 @@ const ContactForm = () => {
             className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark transition-colors"
             disabled={status === 'loading'}
           ></textarea>
+        </div>
+        
+        {/* reCAPTCHA */}
+        <div className="flex flex-col items-start">
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+            onChange={() => setCaptchaError(false)}
+          />
+          {captchaError && (
+            <p className="text-red-500 text-sm mt-2">Please verify that you are not a robot.</p>
+          )}
         </div>
         
         <button
