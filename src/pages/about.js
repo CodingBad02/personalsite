@@ -111,19 +111,19 @@ const About = () => {
               <ul className="space-y-3">
                 <li className="flex">
                   <span className="text-primary-light dark:text-primary-dark mr-2">•</span>
-                  <span>Winner at MADHACK 24, delivering an innovative ML healthcare solution that addressed critical medical challenges.</span>
+                  <span>Winner at MADHACK 23 and MADHACK 24 - Developed ML Solutions for a Graph marketplace and an auction based solution for inventory management. </span>
                 </li>
                 <li className="flex">
                   <span className="text-primary-light dark:text-primary-dark mr-2">•</span>
-                  <span>Smart India Hackathon finalist—developed an IoT-based gait analysis system for medical applications.</span>
+                  <span>Winner, Smart India Hackathon 2022 — developed an IoT-based gait analysis system for medical applications. (PS RK766)</span>
                 </li>
                 <li className="flex">
                   <span className="text-primary-light dark:text-primary-dark mr-2">•</span>
-                  <span>Received the IEEE Catalyst award for research on Graph Convolutional Networks and their applications.</span>
+                  <span>Winner, IEEE Catalyst award for research on Graph Convolutional Networks and their applications. In specific, applications in predicting pandemic incidence</span>
                 </li>
                 <li className="flex">
                   <span className="text-primary-light dark:text-primary-dark mr-2">•</span>
-                  <span>Awarded academic scholarship at SSNCE for consistent excellence in coursework and research.</span>
+                  <span>SSN Research Grant - CGM Pump (<a href="/projects" className="text-primary-light dark:text-primary-dark hover:underline">Read More in Projects Section</a>).</span>
                 </li>
               </ul>
             </div>
