@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const CompanyLogo = ({ company, logo, selected, onClick, date }) => {
+const CompanyLogo = ({ company, logo, selected, onClick, date, isEducation }) => {
+  // Default paths for logos
+  const defaultLogo = isEducation 
+    ? `/images/education/${company.toLowerCase().replace(/\s+/g, '-')}.png`
+    : `/images/companies/${company.toLowerCase().replace(/\s+/g, '-')}.png`;
+
   return (
     <motion.div
       className={`relative z-10 cursor-pointer transition-all duration-300 ${
@@ -20,7 +25,7 @@ const CompanyLogo = ({ company, logo, selected, onClick, date }) => {
         `}
       >
         <img 
-          src={logo || `/images/companies/${company.toLowerCase().replace(/\s+/g, '-')}.png`}
+          src={logo || defaultLogo}
           alt={company} 
           className="w-full h-full object-contain p-2"
         />
@@ -37,6 +42,10 @@ const CompanyLogo = ({ company, logo, selected, onClick, date }) => {
 
 const ExperienceTimeline = ({ data }) => {
   const [selectedCompany, setSelectedCompany] = useState(0);
+  // Determine if this is education data
+  const isEducation = data.length > 0 && data[0].company && 
+    (data[0].company.includes('School') || data[0].company.includes('College') || data[0].company.includes('University'));
+  
   // Sort data by date (most recent first)
   const sortedData = [...data].sort((a, b) => {
     const dateA = new Date(a.date.split(' - ')[0]);
@@ -65,6 +74,7 @@ const ExperienceTimeline = ({ data }) => {
                 date={exp.date}
                 selected={index === selectedCompany}
                 onClick={() => handleSelectCompany(index)}
+                isEducation={isEducation}
               />
               <div 
                 className={`absolute top-8 w-4 h-4 rounded-full border-2 ${
@@ -95,7 +105,9 @@ const ExperienceTimeline = ({ data }) => {
             <h4 className="text-xl font-medium mb-1">{sortedData[selectedCompany].company}</h4>
             <p className="text-gray-600 dark:text-gray-400 mb-6">{sortedData[selectedCompany].date}</p>
             
-            <h5 className="font-medium mb-3">Responsibilities:</h5>
+            <h5 className="font-medium mb-3">
+              {isEducation ? 'Achievements & Activities:' : 'Responsibilities:'}
+            </h5>
             <ul className="space-y-2 list-disc pl-5 text-gray-700 dark:text-gray-300">
               {sortedData[selectedCompany].description.map((item, i) => (
                 <li key={i}>{item}</li>
@@ -113,7 +125,7 @@ const ExperienceTimeline = ({ data }) => {
           className="text-center p-12 bg-gray-50 dark:bg-gray-800/50 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-700"
         >
           <p className="text-gray-600 dark:text-gray-400">
-            Click on a company logo on the timeline to view details
+            Click on {isEducation ? 'an institution' : 'a company'} logo on the timeline to view details
           </p>
         </motion.div>
       )}
