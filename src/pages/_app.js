@@ -3,8 +3,32 @@ import { ThemeProvider } from '../utils/theme-context';
 import AnalyticsWrapper from '../components/AnalyticsWrapper';
 import Head from 'next/head';
 import Script from 'next/script';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
+  const pageVariants = {
+    initial: {
+      opacity: 0,
+      // x: "-100vw", // Example: Slide from left
+    },
+    in: {
+      opacity: 1,
+      // x: 0, // Example: Slide to center
+    },
+    out: {
+      opacity: 0,
+      // x: "100vw", // Example: Slide to right
+    }
+  };
+
+  const pageTransition = {
+    type: "tween", // Or "spring", "inertia"
+    ease: "anticipate", // Example easing
+    duration: 0.5 // Adjust duration as needed
+  };
   return (
     <ThemeProvider>
       <Head>
@@ -27,7 +51,18 @@ function MyApp({ Component, pageProps }) {
         }}
       />
       <AnalyticsWrapper>
-        <Component {...pageProps} />
+        <AnimatePresence mode='wait'>
+          <motion.div 
+              key={router.route} 
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+            <Component {...pageProps} />
+          </motion.div>
+        </AnimatePresence>
       </AnalyticsWrapper>
     </ThemeProvider>
   );

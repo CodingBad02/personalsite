@@ -16,7 +16,8 @@ const releasesData = {
       "Project showcase with expandable details",
       "Experience timeline with interactive company selection",
       "Spotify Now Playing integration via PythonAnywhere Backend",
-      "Smooth page transitions and animations"
+      "Smooth page transitions and animations",
+      "Blog section with image/YouTube previews and embeds"
     ]
   },
   upcoming: {
@@ -48,6 +49,14 @@ const releasesData = {
         {
           type: "security",
           description: "Implemented multiple anti-spam measures: rate limiting and honeypot fields"
+        },
+        {
+          type: "feature",
+          description: "Added blog section with support for image/YouTube previews on summaries and full embeds on post pages"
+        },
+        {
+          type: "feature",
+          description: "Implemented smoother page transition animations using Framer Motion"
         },
         {
           type: "improvement",
@@ -116,4 +125,4 @@ const releasesData = {
   ]
 };
 
-export default releasesData; 
+export default releasesData;

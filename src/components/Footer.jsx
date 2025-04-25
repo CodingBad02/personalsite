@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiInstagram } from 'react-icons/fi';
 import BuyMeAChai from './BuyMeAChai';
 
 const Footer = () => {
@@ -52,13 +52,22 @@ const Footer = () => {
               <FiGithub className="h-6 w-6" />
             </a>
             <a 
-              href="https://linkedin.com/in/manjunathan-r" 
+              href="https://www.linkedin.com/in/manjunathan-r-06396b1b7/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark transition-colors"
               aria-label="LinkedIn"
             >
               <FiLinkedin className="h-6 w-6" />
+            </a>
+            <a 
+              href="https://www.instagram.com/koffeewith.ai?igsh=MXF4bTk2MnB5Mzd3cA==" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark transition-colors"
+              aria-label="Instagram"
+            >
+              <FiInstagram className="h-6 w-6" />
             </a>
             <a 
               href="mailto:manjunathan.ai02@gmail.com" 

@@ -38,6 +38,7 @@ const Navbar = () => {
     { name: 'Publications', path: '/publications' },
     { name: 'Skills', path: '/skills' },
     { name: 'Releases', path: '/releases' },
+    { name: 'Blog', path: '/blog' }, // Added Blog link
     { name: 'Contact', path: '/contact' },
   ];
 
