@@ -1,6 +1,7 @@
 import '../styles/globals.css';
 import { ThemeProvider } from '../utils/theme-context';
 import AnalyticsWrapper from '../components/AnalyticsWrapper';
+import Chatbot from '../components/Chatbot';
 import Head from 'next/head';
 import Script from 'next/script';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -63,6 +64,7 @@ function MyApp({ Component, pageProps }) {
             <Component {...pageProps} />
           </motion.div>
         </AnimatePresence>
+        <Chatbot />
       </AnalyticsWrapper>
     </ThemeProvider>
   );
