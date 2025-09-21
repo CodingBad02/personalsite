@@ -33,13 +33,10 @@ const About = () => {
           <div className="md:col-span-2 space-y-6">
             <div className="prose dark:prose-invert max-w-none">
               <p className="mb-4 text-lg">
-                Here's the deal: You can't outrun the AI revolution. Large Language Models and cutting-edge tech evolve faster than you can blink, shredding yesterday's machine learning playbook. Is that game over for us? Absolutely Goddamn not (Harvey Specter - Suits) —it's just getting started!
+              The machines are getting smarter, but someone still needs to tell them how to play nice together.
               </p>
               <p className="mb-4 text-lg">
-                I'm Manjunathan Radhakrishnan, a Machine Learning Engineer and Researcher who thrives in this chaos. With a degree in Electronics and Communication Engineering from Sri Sivasubramaniya Nadar College of Engineering (CGPA: 9.02/10), I've got the backdrop and base knowledge to back it up. My battleground? Advanced computer vision, distributed training frameworks, and cloud-agnostic ML solutions - with a keen interest on designing efficient systems, hardware software hand in hand. I've built modified YOLO architectures to spot ships like a hawk and engineered agentic platforms at Mad Street Den (Vue.ai) that redefine what's possible. Innovation, efficiency, impact—that's my creed.
-              </p>
-              <p className="mb-4 text-lg">
-                The rapid pace of AI isn't a hurdle; it's my adrenaline. I design systems, tweak models, and turn wild ideas into reality, whether it's scaling architectures or fine-tuning solutions that actually work. With a couple of years under my belt and a hunger to push limits, I'm here to tackle the toughest challenges and shape a future that doesn't just arrive—it dominates.
+              I'm Manjunathan Radhakrishnan, a System Architect and ML Engineer who transforms chaos into scalable intelligence. Specializing in Agentic AI and Workflow Orchestration, I've engineered platforms that handle millions of transactions across ECommerce, Healthcare, and InsureTech - domains where "it works on my machine" means nothing
               </p>
             </div>
             
@@ -115,7 +112,7 @@ const About = () => {
                 </li>
                 <li className="flex">
                   <span className="text-primary-light dark:text-primary-dark mr-2">•</span>
-                  <span>Winner, Smart India Hackathon 2022 — developed an IoT-based gait analysis system for medical applications. (PS RK766)</span>
+                  <span>Winner, Smart India Hackathon 2022 - developed an IoT-based gait analysis system for medical applications. (PS RK766)</span>
                 </li>
                 <li className="flex">
                   <span className="text-primary-light dark:text-primary-dark mr-2">•</span>

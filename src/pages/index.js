@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Hero from '../components/Hero';
+import ClientLogoCarousel from '../components/ClientLogoCarousel';
 import MainLayout from '../layouts/MainLayout';
 import { FiArrowRight, FiBriefcase, FiCode, FiAward, FiClipboard } from 'react-icons/fi';
 
@@ -57,6 +58,9 @@ const IndexPage = () => {
 
       {/* Hero Section */}
       <Hero />
+
+      {/* Client Logos Carousel */}
+      <ClientLogoCarousel />
 
       {/* Latest Work Section */}
       <section className="py-20 bg-surface-light dark:bg-surface-dark">
