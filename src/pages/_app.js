@@ -34,7 +34,9 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Manjunathan Radhakrishnan | ML Engineer & Researcher</title>
         <meta name="description" content="Personal website of Manjunathan Radhakrishnan, Machine Learning Engineer and Researcher" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/images/websitelogo.png" />
+        <link rel="shortcut icon" href="/images/websitelogo.png" />
+        <link rel="apple-touch-icon" href="/images/websitelogo.png" />
         {/* Google Fonts */}
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
       </Head>
