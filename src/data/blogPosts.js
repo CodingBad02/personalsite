@@ -3,6 +3,18 @@
 // Sample blog post data (replace with actual data source later, e.g., Markdown files)
 const posts = [
   {
+    "slug": "v-commerce-studio-gke-hackathon",
+    "title": "V-Commerce Studio: Building the Future of E-commerce with Google Cloud",
+    "summary": "How a random call turned into an hackathon project, V-Commerce Studio, built entirely on Google's native AI tools for the #GKETurns10 Hackathon.",
+    "content": "Blog Post for Entering into the Hackathon: On a random Thursday afternoon, I got a call from Rakesh Elango, who invited me to team up for the #GKETurns10 Hackathon. What started as that simple call evolved into V-Commerce Studio.\n\nThrilled to share what we built for the Hackathon, hosted by Devpost! We (Poujhit MU, Mary Shermila, Ambarish K.C.) envisioned V-Commerce Studio as an AI-powered blueprint for the future of e-commerce (a glorified Shopify, if you may), drawing inspiration from the hyper-personalization of B2C platforms like Amazon and Myntra. We brought this vision to life by orchestrating a unified system entirely within the Google Cloud ecosystem, showcasing the power of its native tools.\n\nWe leveraged a suite of Google's cutting-edge AI to build a truly intelligent platform and managed to deploy it onto Google Kubernetes Engine. Showcasing a couple of features, which we built well under a week here.\n\n- A RAG-driven chat assistant uses Vertex AI and Gemini to provide full product context and handle complex user queries.\n- To boost engagement, we built a proactive engagement and upsell agent with the Agent Development Kit (ADK) that uses Gemini to intelligently \"nudge\" users toward a purchase. How many of y'all have got that one notification from Zomato to place an order? Yes, this is exactly how that works.\n- We also integrated immersive features like virtual try-on using Nano Banana (This one is way too good).\n- And an admin-only ad (Yes, RBAC too) generation tool powered by Veo 3.\n\nWhile concepts like ADK, MCP, A2A seemed really abstract to implement in production scale at first, we are grateful to the team at Google Cloud for providing comprehensive documentation across their services and products, which was immensely helpful to us.\n\nHad a lot of fun building this along with the team!",
+    "date": "2025-09-22",
+    "initialVotes": 125,
+    "type": "article",
+    "mediaType": "image",
+    "mediaUrl": "/images/blog/Vcommerce-Logo.png",
+    "pinned": true
+  },
+  {
     slug: 'first-post',
     title: 'My First Blog Post',
     summary: 'This is a short summary of my very first blog post. It talks about exciting things!',
