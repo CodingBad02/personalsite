@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { FiSend, FiCheck, FiAlertTriangle } from 'react-icons/fi';
 import ReCAPTCHA from 'react-google-recaptcha';
 
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -27,13 +29,13 @@ const ContactForm = () => {
     e.preventDefault();
     setCaptchaError(false);
     
-    // Verify reCAPTCHA
-    const captchaToken = recaptchaRef.current.getValue();
-    if (!captchaToken) {
+    // Verify reCAPTCHA (only when a site key is configured)
+    const captchaToken = RECAPTCHA_SITE_KEY ? recaptchaRef.current?.getValue() : null;
+    if (RECAPTCHA_SITE_KEY && !captchaToken) {
       setCaptchaError(true);
       return;
     }
-    
+
     setStatus('loading');
     
     try {
@@ -63,7 +65,7 @@ const ContactForm = () => {
       });
       
       // Reset reCAPTCHA
-      recaptchaRef.current.reset();
+      recaptchaRef.current?.reset();
       
       // Reset form status after 3 seconds
       setTimeout(() => {
@@ -170,17 +172,19 @@ const ContactForm = () => {
           ></textarea>
         </div>
         
-        {/* reCAPTCHA */}
-        <div className="flex flex-col items-start">
-          <ReCAPTCHA
-            ref={recaptchaRef}
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-            onChange={() => setCaptchaError(false)}
-          />
-          {captchaError && (
-            <p className="text-red-500 text-sm mt-2">Please verify that you are not a robot.</p>
-          )}
-        </div>
+        {/* reCAPTCHA — only rendered when a site key is configured */}
+        {RECAPTCHA_SITE_KEY && (
+          <div className="flex flex-col items-start">
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={RECAPTCHA_SITE_KEY}
+              onChange={() => setCaptchaError(false)}
+            />
+            {captchaError && (
+              <p className="text-red-500 text-sm mt-2">Please verify that you are not a robot.</p>
+            )}
+          </div>
+        )}
         
         <button
           type="submit"

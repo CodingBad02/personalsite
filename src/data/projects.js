@@ -1,10 +1,16 @@
 import dedent from 'ts-dedent';
 
 // src/data/projects.js
+// NOTE: Budhi AI, Planr AI, V-Commerce Studio, and DeepGait are featured as flip
+// cards on the homepage, so they're intentionally omitted here to avoid duplication.
 const projectsData = [
   {
     id: 1,
     title: "TrainConv Framework",
+    image: "/images/projects/trainconvframework.jpg",
+    featured: true,
+    category: "ML Framework",
+    highlights: ["Config-driven training pipelines", "Tune hyperparameter search", "TensorBoard monitoring"],
     description: "A distributed training framework on PyTorch and TensorFlow with configuration-based pipelines and automated orchestration.",
     longDescription: dedent(`
     • **TrainConv** is an MSD wrapper built around PyTorch for training machine learning models.
@@ -31,19 +37,13 @@ const projectsData = [
     demoLink: ""
   },
   {
-    id: 2,
-    title: "DeepGait",
-    description: "An IoT-based intelligent gait analysis system using a 6-axis IMU, force sensors, and AWS integration.",
-    longDescription: dedent(`
-      DeepGait combines hardware and AI to create a comprehensive gait analysis platform. The system uses custom-designed insoles with embedded force sensors and a 6-axis IMU to capture detailed movement data. Our deep learning pipeline processes this data to extract gait parameters, detect anomalies, and provide actionable insights for physical therapy and rehabilitation. The cloud backend on AWS enables real-time monitoring, historical analysis, and personalized recommendations for users and healthcare providers.
-    `),
-    technologies: ["Deep Learning", "IoT", "AWS", "Embedded Systems", "Time-Series Analysis"],
-    githubLink: "https://github.com/CodingBad02/deepgait",
-    demoLink: "https://www.covaichronicle.com/english/contentview/forge30822"
-  },
-  {
     id: 3,
     title: "GCN for Pandemic Prediction",
+    image: "/images/projects/gcnforpandemicprediction.jpg",
+    featured: true,
+    category: "Research · IEEE AISP",
+    year: "2022",
+    highlights: ["85.3% prediction accuracy", "Graph convolutional networks", "Published at IEEE AISP 2022"],
     description: "Graph convolutional networks for predicting state-wise COVID-19 incidence with up to 85.3% accuracy.",
     longDescription: dedent(`
       This research project leverages the power of Graph Convolutional Networks (GCNs) to model and predict the spread of COVID-19 across Indian states. By representing states as nodes in a graph with edges defined by geographic adjacency and transportation links, our model captures the complex spatial dependencies in disease transmission. The model incorporates demographic, healthcare, and mobility data to achieve 85.3% prediction accuracy, outperforming traditional time-series and statistical approaches. The research was published in IEEE AISP 2022 and has implications for pandemic preparedness and resource allocation.
@@ -55,6 +55,9 @@ const projectsData = [
   {
     id: 4,
     title: "Real-time Ship Detection",
+    image: "/images/projects/real-timeshipdetection.jpg",
+    category: "Computer Vision",
+    highlights: ["81.02% mAP on SAR imagery", "30+ FPS real-time", "Modified YOLOv3 + attention"],
     description: "A modified YOLOV3 architecture for ship detection in synthetic radar images with high accuracy and performance.",
     longDescription: dedent(`
       This computer vision project addresses the challenge of detecting ships in Synthetic Aperture Radar (SAR) images under various conditions. We developed a modified YOLOv3 architecture optimized for SAR imagery, incorporating attention mechanisms and custom anchor boxes to improve detection accuracy. The system achieves 81.02% mAP and near 100% accuracy in element detection while maintaining real-time performance at 30+ FPS on standard GPU hardware. The solution is designed to integrate with maritime surveillance systems and can operate in adverse weather conditions where optical systems fail.
@@ -66,6 +69,9 @@ const projectsData = [
   {
     id: 5,
     title: "Programmable Insulin Delivery System",
+    image: "/images/projects/programmableinsulindeliverysystem.jpg",
+    category: "Embedded · Healthcare",
+    highlights: ["Closed-loop CGM control", "Raspberry Pi + micropump", "18-month funded project"],
     description: "Raspberry Pi-based closed-loop system for automated insulin delivery, leveraging continuous glucose monitoring and real-time processing.",
     longDescription: dedent(`
       • **Programmable Insulin Delivery System** is an embedded solution designed to replicate pancreatic functions by automating insulin administration.
@@ -94,6 +100,10 @@ const projectsData = [
   {
     id: 6,
     title: "CaprioSim",
+    image: "/images/projects/capriosim.jpg",
+    category: "Simulation · Research",
+    year: "2021",
+    highlights: ["Traffic sign recognition", "Cellular automata flow model", "Presented at SSNCE 2021"],
     description: "Traffic Sign Recognition and Flow Simulation using Cellular Automata. Integrates computer vision-based traffic sign detection with cellular automata simulation to model priority-based traffic flow at intersections.",
     longDescription: dedent(`
       • **Overview**:

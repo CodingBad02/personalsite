@@ -23,7 +23,7 @@ const posts = [
     initialVotes: 15,
     type: 'article', // 'article' or 'byte'
     mediaType: 'image', // 'image', 'youtube', or null
-    mediaUrl: '/images/blog/blogimage.png', // URL for image or YouTube video ID
+    mediaUrl: '/images/blog/blogimage.jpg', // URL for image or YouTube video ID
     pinned: true, // Whether this post should be pinned to the top
   },
   {

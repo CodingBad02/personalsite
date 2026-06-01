@@ -26,17 +26,21 @@ const About = () => {
       </Head>
       
       <section className="py-20 container mx-auto px-4">
-        <h1 className="text-4xl font-bold mb-6">About Me</h1>
-        
+        <p className="label-mono mb-2">// whoami</p>
+        <h1 className="text-4xl font-bold mb-6">I build AI products people use.</h1>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Main content - Professional info */}
           <div className="md:col-span-2 space-y-6">
             <div className="prose dark:prose-invert max-w-none">
               <p className="mb-4 text-lg">
-              The machines are getting smarter, but someone still needs to tell them how to play nice together.
+              I'm Manjunathan Radhakrishnan — an <strong>AI Solutions Architect</strong> who likes shipping more than slide decks. I build production agentic AI, RAG and decision systems, and I care about the boring parts that make them real: groundedness, observability, PII masking, SOC2.
               </p>
               <p className="mb-4 text-lg">
-              I'm Manjunathan Radhakrishnan, a System Architect and ML Engineer who transforms chaos into scalable intelligence. Specializing in Agentic AI and Workflow Orchestration, I've engineered platforms that handle millions of transactions across ECommerce, Healthcare, and InsureTech - domains where "it works on my machine" means nothing
+              Today I'm <strong>AI Research Architect at Antz AI</strong>, where I shipped <strong>Budhi AI</strong> (a second-memory app, 1000+ downloads, 92%+ retrieval precision) and <strong>Planr AI</strong> (a manufacturing decision-intelligence platform). Before that, at Mad Street Den (Vue.ai), I architected multimodal AI for 17+ Fortune 500 clients and built TrainConv, cutting model deployment time by 60%.
+              </p>
+              <p className="mb-4 text-lg">
+              The path here: B.E. at SSN → computer-vision research at IIT Madras' Robert Bosch Centre → action recognition at Drishti → enterprise ML at Mad Street Den → product + research at Antz AI. Customer-facing throughout, and an IEEE-published, multi-time hackathon-winning engineer who still loves the build.
               </p>
             </div>
             
@@ -143,14 +147,14 @@ const About = () => {
                 />
               </div>
               <h2 className="text-xl font-bold mb-1">Manjunathan R</h2>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">Chennai, India</p>
-              
-              <div className="flex justify-center space-x-2">
+              <p className="text-gray-600 dark:text-gray-400 mb-4">Hyderabad, India</p>
+
+              <div className="flex flex-wrap justify-center gap-2">
                 <div className="px-3 py-1 bg-primary-light/10 dark:bg-primary-dark/10 rounded-full text-sm">
-                  AI Engineer
+                  AI Solutions Architect
                 </div>
                 <div className="px-3 py-1 bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full text-sm">
-                  Researcher
+                  Product Builder
                 </div>
               </div>
             </motion.div>

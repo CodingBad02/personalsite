@@ -3,7 +3,7 @@ import { FiDownload, FiEye, FiExternalLink } from 'react-icons/fi';
 
 const ResumePDF = () => {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-  const resumePath = '/Manjunathan_Resume.pdf';
+  const resumePath = '/Manjunathan%20Resume.pdf';
   
   return (
     <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 mb-8">

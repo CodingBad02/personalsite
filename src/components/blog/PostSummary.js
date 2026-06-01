@@ -1,60 +1,35 @@
 // src/components/blog/PostSummary.js
 import React from 'react';
 import Link from 'next/link';
-import useVoting from '../../hooks/useVoting';
-import VoteButton from './VoteButton';
-import VoteCounter from './VoteCounter';
+import { FiArrowUpRight } from 'react-icons/fi';
+import { readingTime } from '../../utils/readingTime';
 
 const PostSummary = ({ post }) => {
-  // Use custom voting hook for localStorage persistence
-  const { votes, voted, handleVote } = useVoting(post);
+  const { minutes } = readingTime(post.content || post.summary || '');
+  const thumb =
+    post.mediaType === 'image' ? post.mediaUrl :
+    post.mediaType === 'youtube' ? `https://img.youtube.com/vi/${post.mediaUrl}/mqdefault.jpg` : null;
 
   return (
-    <div className="flex bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
-      {/* Voting Section */}
-      {/* Voting Section */}
-      <div className="flex flex-col items-center justify-start p-4 bg-gray-100 dark:bg-gray-700">
-        <VoteButton type="up" voted={voted} onClick={handleVote} size="small" />
-        <VoteCounter count={votes} size="small" />
-        <VoteButton type="down" voted={voted} onClick={handleVote} size="small" />
-      </div>
-
-      {/* Media Preview Section (Optional) */}
-      {post.mediaType && post.mediaUrl && (
-        <div className="flex-shrink-0 w-40 h-40 hidden md:flex items-center justify-center mr-4 overflow-hidden">
-          <Link href={`/blog/${post.slug}`} className="block relative w-full h-full">
-            {post.mediaType === 'image' && (
-              <img
-                src={post.mediaUrl} // Assumes /path/to/image.png for local or full URL for external
-                alt={`${post.title} preview`}
-                className="w-full h-full object-cover rounded-l-lg"
-              />
-            )}
-            {post.mediaType === 'youtube' && (
-              <img
-                src={`https://img.youtube.com/vi/${post.mediaUrl}/mqdefault.jpg`}
-                alt={`${post.title} YouTube preview`}
-                className="w-full h-full object-cover rounded-l-lg"
-              />
-            )}
-          </Link>
+    <Link href={`/blog/${post.slug}`} className="group flex gap-5 py-6">
+      {thumb && (
+        <div className="hidden sm:block shrink-0 w-28 h-20 overflow-hidden rounded-lg border border-line-light dark:border-line-dark">
+          <img src={thumb} alt="" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
         </div>
       )}
-
-      {/* Post Content Section */}
-      <div className="p-6 flex-grow">
-        <h2 className="text-2xl font-semibold mb-2 dark:text-white">
-          <Link href={`/blog/${post.slug}`} className="hover:text-blue-600 dark:hover:text-blue-400">
+      <div className="flex-grow">
+        <div className="flex items-baseline justify-between gap-3">
+          <h2 className="text-lg font-semibold group-hover:text-primary-light dark:group-hover:text-primary-dark transition-colors">
             {post.title}
-          </Link>
-        </h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-4">{post.summary}</p>
-        <div className="text-sm text-gray-500 dark:text-gray-500">
-          <span>Posted on {post.date}</span>
-          {/* Add author, tags etc. later if needed */}
+          </h2>
+          <FiArrowUpRight className="h-4 w-4 shrink-0 text-gray-300 dark:text-gray-600 group-hover:text-primary-light dark:group-hover:text-primary-dark transition-colors" />
         </div>
+        <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-1 line-clamp-2">{post.summary}</p>
+        <p className="font-mono text-xs text-gray-400 dark:text-gray-500 mt-2">
+          {post.date} · {minutes} min read{post.type ? ` · ${post.type}` : ''}
+        </p>
       </div>
-    </div>
+    </Link>
   );
 };
 

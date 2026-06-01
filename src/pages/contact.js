@@ -1,108 +1,173 @@
-// src/pages/contact.js
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import MainLayout from '../layouts/MainLayout';
 import ContactForm from '../components/ContactForm';
-import { FiCalendar, FiArrowRight } from 'react-icons/fi';
+import { TextRevealCard, TextRevealCardTitle, TextRevealCardDescription } from '../components/TextRevealCard';
+import { EncryptedText } from '../components/EncryptedText';
+import { FiArrowRight, FiCalendar, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 
-const Contact = () => {
-  const calendlyInitialized = useRef(false);
+const mono = "font-['JetBrains_Mono']";
 
-  // Use useEffect to ensure Calendly initializes after component mounts
-  useEffect(() => {
-    // Only attempt to initialize once
-    if (calendlyInitialized.current) return;
-    
-    // Function to initialize Calendly
-    const initCalendly = () => {
-      if (typeof window !== 'undefined' && window.Calendly) {
-        try {
-          // Remove any existing widget first
-          const existingWidget = document.querySelector('.calendly-badge-widget');
-          if (existingWidget) {
-            existingWidget.remove();
-          }
-          
-          // Initialize the widget
-          window.Calendly.initBadgeWidget({
-            url: 'https://calendly.com/manjunathan-ai02/30min',
-            text: 'Schedule time with me',
-            color: '#7C3AED',
-            textColor: '#ffffff'
-          });
-          
-          calendlyInitialized.current = true;
-        } catch (error) {
-          console.error('Error initializing Calendly widget:', error);
-        }
-      } else {
-        // If Calendly isn't available yet, try again after a short delay
-        setTimeout(initCalendly, 500);
-      }
-    };
+const channels = [
+  {
+    label: 'Email',
+    value: 'manjunathan.ai02@gmail.com',
+    href: 'mailto:manjunathan.ai02@gmail.com',
+    icon: FiMail,
+  },
+  {
+    label: 'Calendar',
+    value: '30 minute working session',
+    href: 'https://calendly.com/manjunathan-ai02/30min',
+    icon: FiCalendar,
+  },
+  {
+    label: 'LinkedIn',
+    value: 'Manjunathan R',
+    href: 'https://linkedin.com/in/manjunathan-r-06396b1b7/',
+    icon: FiLinkedin,
+  },
+  {
+    label: 'GitHub',
+    value: 'CodingBad02',
+    href: 'https://github.com/CodingBad02',
+    icon: FiGithub,
+  },
+];
 
-    // Load Calendly script dynamically
-    if (typeof window !== 'undefined') {
-      const script = document.createElement('script');
-      script.src = 'https://assets.calendly.com/assets/external/widget.js';
-      script.async = true;
-      script.onload = initCalendly;
-      document.body.appendChild(script);
-      
-      // Also add the CSS
-      const link = document.createElement('link');
-      link.href = 'https://assets.calendly.com/assets/external/widget.css';
-      link.rel = 'stylesheet';
-      document.head.appendChild(link);
-    }
-    
-    // This will run when component unmounts
-    return () => {
-      // Remove any Calendly elements when navigating away
-      if (typeof window !== 'undefined') {
-        const calendlyWidget = document.querySelector('.calendly-badge-widget');
-        if (calendlyWidget) {
-          calendlyWidget.remove();
-        }
-      }
-    };
-  }, []);
-  
-  return (
-    <MainLayout>
-      <Head>
-        <title>Contact | Manjunathan Radhakrishnan</title>
-      </Head>
-      <section className="py-20 container mx-auto px-4">
-        <h1 className="text-4xl font-bold mb-8">Contact</h1>
-        
-        {/* Recruiting callout */}
-        <div className="bg-gradient-to-r from-primary-light/10 to-secondary-light/10 dark:from-primary-dark/10 dark:to-secondary-dark/10 rounded-lg p-6 mb-10">
-          <div className="flex items-start space-x-4">
-            <div className="bg-primary-light/20 dark:bg-primary-dark/20 p-3 rounded-full">
-              <FiCalendar className="h-6 w-6 text-primary-light dark:text-primary-dark" />
-            </div>
-            <div>
-              <h2 className="text-xl font-bold mb-2">Looking to discuss job opportunities?</h2>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
-                If you're a recruiter or hiring manager interested in discussing potential roles, I'd be happy to schedule a dedicated time to chat. You can use the "Schedule time with me" button that appears at the bottom right of this page to book a convenient 30-minute slot.
-              </p>
-              <a 
-                href="https://calendly.com/manjunathan-ai02/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-primary-light dark:text-primary-dark font-medium hover:underline"
-              >
-                Book a conversation <FiArrowRight className="ml-2" />
-              </a>
-            </div>
+const steps = [
+  {
+    title: 'Send context',
+    text: 'Tell me what you are trying to build, where the AI system is stuck, and what a useful win would look like.',
+  },
+  {
+    title: 'I map the problem',
+    text: 'I look for the workflow, data boundary, evaluation loop, and the first thing worth shipping instead of a deck.',
+  },
+  {
+    title: 'We decide the build path',
+    text: 'If there is fit, we define a lean plan: prototype, production path, risks, and what not to spend time on.',
+  },
+];
+
+const Contact = () => (
+  <MainLayout>
+    <Head>
+      <title>Contact | Manjunathan Radhakrishnan</title>
+      <meta name="description" content="Contact Manjunathan Radhakrishnan for forward-deployed AI systems, RAG, agents, computer vision, and AI engineering work." />
+    </Head>
+
+    <div className="contact-page relative overflow-hidden bg-[#f4f4f4] text-[#191818] dark:bg-[#08090f] dark:text-[#f2f5ff]">
+      <div className="dot-pattern" aria-hidden="true" />
+      <div className="interactive-grid-pattern" aria-hidden="true" />
+
+      <main className="relative mx-auto max-w-[1240px] px-6 pb-24 pt-32 md:px-12 md:pb-32">
+        <section className="grid gap-12 border-b border-[#191818]/10 pb-16 dark:border-white/10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <div>
+            <span className={`${mono} mb-5 block text-xs text-[#191818]/40 dark:text-white/40`}>// page.contact</span>
+            <h1 className="mb-7 font-heading text-5xl font-semibold leading-[0.98] tracking-normal md:text-7xl">
+              <EncryptedText text="Bring the messy AI problem." />
+            </h1>
+            <p className="max-w-2xl text-lg leading-8 text-[#191818]/68 dark:text-white/70">
+              I am useful when a team needs someone customer-facing who can move between product context,
+              ML systems, coding tools, and research judgement without losing the plot.
+            </p>
           </div>
-        </div>
-        
-        <ContactForm />
-      </section>
-    </MainLayout>
-  );
-};
+        </section>
+
+        <section className="grid gap-8 border-b border-[#191818]/10 py-16 dark:border-white/10 lg:grid-cols-[0.85fr_1.15fr]">
+          <div>
+            <span className={`${mono} mb-4 block text-xs text-[#191818]/40 dark:text-white/40`}>// direct.channels</span>
+            <h2 className="mb-5 font-heading text-4xl font-semibold tracking-normal md:text-5xl">
+              <EncryptedText text="Reach me where it is easiest." />
+            </h2>
+            <p className="max-w-xl text-base leading-8 text-[#191818]/64 dark:text-white/64">
+              Email is best for context. Calendar is best when the problem is already shaped enough for a working session.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {channels.map((channel) => {
+              const Icon = channel.icon;
+              const external = channel.href.startsWith('http');
+              return (
+                <a
+                  key={channel.label}
+                  href={channel.href}
+                  target={external ? '_blank' : undefined}
+                  rel={external ? 'noopener noreferrer' : undefined}
+                  className="contact-channel group relative overflow-hidden border border-[#191818]/12 bg-white/30 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#1b5def]/50 dark:border-white/10 dark:bg-white/[0.035] dark:hover:border-[#7cb5ff]/50"
+                >
+                  <span className="mb-8 flex h-10 w-10 items-center justify-center border border-[#191818]/12 text-[#1b5def] dark:border-white/10 dark:text-[#7cb5ff]">
+                    <Icon className="h-4 w-4" />
+                  </span>
+                  <span className={`${mono} block text-xs text-[#191818]/45 dark:text-white/45`}>{channel.label}</span>
+                  <span className="mt-2 flex items-center justify-between gap-4 text-lg font-medium">
+                    {channel.value}
+                    <FiArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="grid gap-8 border-b border-[#191818]/10 py-16 dark:border-white/10 lg:grid-cols-[0.85fr_1.15fr]">
+          <div>
+            <span className={`${mono} mb-4 block text-xs text-[#191818]/40 dark:text-white/40`}>// what.happens.next</span>
+            <h2 className="mb-5 font-heading text-4xl font-semibold tracking-normal md:text-5xl">
+              <EncryptedText text="A simple path." />
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {steps.map((step, index) => (
+              <div key={step.title} className="contact-step grid gap-4 border border-[#191818]/12 bg-white/20 p-5 dark:border-white/10 dark:bg-white/[0.025] md:grid-cols-[72px_1fr]">
+                <span className={`${mono} text-sm text-[#1b5def] dark:text-[#7cb5ff]`}>0{index + 1}</span>
+                <div>
+                  <h3 className="mb-2 text-2xl font-semibold">{step.title}</h3>
+                  <p className="leading-7 text-[#191818]/64 dark:text-white/64">{step.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="flex flex-col items-center gap-6 border-b border-[#191818]/10 py-16 text-center dark:border-white/10">
+          <span className={`${mono} block text-xs text-[#191818]/40 dark:text-white/40`}>// the.deal</span>
+          <TextRevealCard
+            text="You know the Business"
+            revealText="I know the chemistry"
+          >
+            <TextRevealCardTitle>Hover to find the fit.</TextRevealCardTitle>
+            <TextRevealCardDescription>
+              You bring the domain and the customers. I bring the AI systems that ship.
+            </TextRevealCardDescription>
+          </TextRevealCard>
+        </section>
+
+        <section className="grid gap-10 py-16 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <span className={`${mono} mb-4 block text-xs text-[#191818]/40 dark:text-white/40`}>// send.note</span>
+            <h2 className="mb-5 font-heading text-4xl font-semibold tracking-normal md:text-5xl">
+              <EncryptedText text="Write the first useful packet." />
+            </h2>
+            <p className="mb-6 max-w-xl leading-8 text-[#191818]/64 dark:text-white/64">
+              A good note has the business problem, the current system, the users affected, and the constraint that makes it hard.
+            </p>
+            <Link href="/projects" className={`${mono} inline-flex items-center gap-2 border border-[#191818]/25 px-5 py-3 text-sm transition-colors hover:border-[#1b5def] hover:text-[#1b5def] dark:border-white/20 dark:hover:border-[#7cb5ff] dark:hover:text-[#7cb5ff]`}>
+              See previous work <FiArrowRight />
+            </Link>
+          </div>
+
+          <div className="contact-form-shell">
+            <ContactForm />
+          </div>
+        </section>
+      </main>
+    </div>
+  </MainLayout>
+);
 
 export default Contact;

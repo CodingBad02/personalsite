@@ -3,3 +3,18 @@ node_modules
 venv
 .env
 .env.local
+
+# OS / editor cruft
+.DS_Store
+**/.DS_Store
+
+# Agent / tooling
+.claude/
+.agents/
+skills-lock.json
+
+# Test artifacts & stray screenshots
+.playwright-mcp/
+/services.png
+/home-desktop.png
+/81c209209973336ae38e83e83b4c8ac3.jpg

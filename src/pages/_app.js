@@ -1,6 +1,9 @@
 import '../styles/globals.css';
 import { ThemeProvider } from '../utils/theme-context';
 import AnalyticsWrapper from '../components/AnalyticsWrapper';
+import CommandPalette, { AskSunProvider } from '../components/CommandPalette';
+import CustomCursor from '../components/CustomCursor';
+import { Analytics } from '@vercel/analytics/react';
 import Head from 'next/head';
 import Script from 'next/script';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -32,13 +35,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider>
       <Head>
-        <title>Manjunathan Radhakrishnan | ML Engineer & Researcher</title>
-        <meta name="description" content="Personal website of Manjunathan Radhakrishnan, Machine Learning Engineer and Researcher" />
+        <title>Manjunathan Radhakrishnan | AI Solutions Architect</title>
+        <meta name="description" content="Manjunathan Radhakrishnan — AI Solutions Architect. I build AI products people use, making businesses AI-native." />
         <link rel="icon" href="/images/websitelogo.png" />
         <link rel="shortcut icon" href="/images/websitelogo.png" />
         <link rel="apple-touch-icon" href="/images/websitelogo.png" />
-        {/* Google Fonts */}
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
       </Head>
       {/* Umami Analytics */}
       <Script
@@ -52,20 +53,25 @@ function MyApp({ Component, pageProps }) {
           console.error('Error loading Umami Analytics:', e);
         }}
       />
-      <AnalyticsWrapper>
-        <AnimatePresence mode='wait'>
-          <motion.div 
-              key={router.route} 
-              initial="initial"
-              animate="in"
-              exit="out"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-            <Component {...pageProps} />
-          </motion.div>
-        </AnimatePresence>
-      </AnalyticsWrapper>
+      <AskSunProvider>
+        <AnalyticsWrapper>
+          <AnimatePresence mode='wait'>
+            <motion.div
+                key={router.route}
+                initial={false}
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+              <Component {...pageProps} />
+            </motion.div>
+          </AnimatePresence>
+          <CommandPalette />
+          <CustomCursor />
+          <Analytics />
+        </AnalyticsWrapper>
+      </AskSunProvider>
     </ThemeProvider>
   );
 }
