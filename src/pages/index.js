@@ -277,13 +277,7 @@ const IndexPage = () => {
                 src="/images/home-profile-2026.jpg"
                 alt=""
                 aria-hidden="true"
-                className="pointer-events-none absolute right-5 top-[35rem] z-0 h-36 w-28 object-cover opacity-[0.08] dark:hidden md:hidden"
-              />
-              <img
-                src="/images/home-profile-dark.jpg"
-                alt=""
-                aria-hidden="true"
-                className="pointer-events-none absolute right-5 top-[35rem] z-0 hidden h-36 w-28 object-cover opacity-[0.08] dark:block md:!hidden"
+                className="pointer-events-none absolute right-5 top-[35rem] z-0 h-36 w-28 object-cover opacity-[0.08] md:hidden"
               />
               <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_440px] xl:grid-cols-[minmax(0,1fr)_520px]">
                 <motion.div initial={false} animate="show" className="relative z-10 max-w-2xl">
@@ -360,12 +354,7 @@ const IndexPage = () => {
                   <HeroImageReveal
                     src="/images/home-profile-2026.jpg"
                     alt="Manjunathan Radhakrishnan"
-                    className="aspect-[4/5] w-full border border-[#191818]/10 shadow-[0_24px_80px_rgba(27,93,239,0.12)] dark:hidden lg:max-h-[640px]"
-                  />
-                  <HeroImageReveal
-                    src="/images/home-profile-dark.jpg"
-                    alt="Manjunathan Radhakrishnan"
-                    className="hidden aspect-[4/5] w-full border dark:block dark:border-white/10 dark:shadow-[0_24px_90px_rgba(124,181,255,0.16)] lg:max-h-[640px]"
+                    className="aspect-[4/5] w-full border border-[#191818]/10 shadow-[0_24px_80px_rgba(27,93,239,0.12)] dark:border-white/10 dark:shadow-[0_24px_90px_rgba(124,181,255,0.16)] lg:max-h-[640px]"
                   />
                 </motion.div>
               </div>

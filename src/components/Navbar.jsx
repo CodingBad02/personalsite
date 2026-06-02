@@ -47,7 +47,7 @@ const Navbar = () => {
                 className="font-mono text-sm font-medium tracking-normal text-[#191818] dark:text-[#f2f5ff]"
               >
                 manjunathan
-                <span className="ml-1 text-[#1b5def] dark:text-[#7cb5ff]">.me</span>
+                <span className="ml-1 text-[#1b5def] dark:text-[#7cb5ff]">.dev</span>
               </motion.div>
             </Link>
 

@@ -14,6 +14,18 @@ const contact = [
   { name: 'GitHub', href: 'https://github.com/CodingBad02' },
   { name: 'Instagram', href: 'https://www.instagram.com/koffeewith.ai?igsh=MXF4bTk2MnB5Mzd3cA==' },
 ];
+const locations = ['Hyderabad', 'Chennai', 'Mumbai', 'Remote'];
+
+const LocationsCol = () => (
+  <div>
+    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#191818]/40 dark:text-white/35 mb-4">LOCATIONS/</p>
+    <ul className="space-y-2.5">
+      {locations.map((loc) => (
+        <li key={loc} className="text-sm text-[#191818]/70 dark:text-white/70">{loc}</li>
+      ))}
+    </ul>
+  </div>
+);
 
 const Col = ({ label, items }) => (
   <div>
@@ -78,9 +90,10 @@ const Footer = () => {
         </div>
 
         {/* columns */}
-        <div className="grid grid-cols-2 gap-8 mb-12 max-w-md">
+        <div className="grid grid-cols-2 gap-8 mb-12 max-w-xl sm:grid-cols-3">
           <Col label="EXPLORE" items={explore} />
           <Col label="CONTACT" items={contact} />
+          <LocationsCol />
         </div>
 
         {/* chai */}
@@ -88,7 +101,7 @@ const Footer = () => {
 
         {/* bottom bar */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-8 border-t border-[#191818]/10 dark:border-white/10">
-          <span className="font-mono text-sm">manjunathan<span className="text-[#1b5def] dark:text-[#7cb5ff]">.me</span></span>
+          <span className="font-mono text-sm">manjunathan<span className="text-[#1b5def] dark:text-[#7cb5ff]">.dev</span></span>
           <div className="flex items-center gap-4 font-mono text-[11px] text-[#191818]/40 dark:text-white/35">
             <Link href="/privacy" className="hover:text-[#191818]/70 dark:hover:text-white/70 transition-colors">Privacy</Link>
             <Link href="/terms" className="hover:text-[#191818]/70 dark:hover:text-white/70 transition-colors">Terms</Link>
