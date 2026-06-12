@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FiGithub, FiExternalLink } from 'react-icons/fi';
 import ReactMarkdown from 'react-markdown';
+import { EASE } from '../utils/motion';
 
 /**
  * codedgar.com/portfolio styled card.
@@ -65,7 +66,7 @@ const ProjectCard = ({ project, index = 0, featured = false }) => {
   const Image = () => (
     <div className="relative overflow-hidden bg-[#f0ece4] border border-[#191818]/10 aspect-[16/10] dark:border-white/10 dark:bg-white/5">
       {image ? (
-        <img src={image} alt={title} className="h-full w-full object-cover transition-transform duration-[600ms] ease-[cubic-bezier(0,0,0.2,1)] group-hover:scale-[1.06]" />
+        <img src={image} alt={title} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]" />
       ) : (
         <span className={`${serif} absolute inset-0 flex items-center justify-center text-[100px] text-[#191818]/15 dark:text-white/10`}>{String(index + 1).padStart(2, '0')}</span>
       )}
@@ -102,9 +103,9 @@ const ProjectCard = ({ project, index = 0, featured = false }) => {
 
   const motionProps = {
     ref,
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 0, y: 24 },
     animate: inView ? { opacity: 1, y: 0 } : {},
-    transition: { duration: 0.5, delay: index * 0.06 },
+    transition: { duration: 0.6, delay: index * 0.06, ease: EASE },
     style: { transformPerspective: 1200 },
   };
 

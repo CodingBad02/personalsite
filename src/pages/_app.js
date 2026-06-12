@@ -6,31 +6,19 @@ import CustomCursor from '../components/CustomCursor';
 import { Analytics } from '@vercel/analytics/react';
 import Head from 'next/head';
 import Script from 'next/script';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 import { useRouter } from 'next/router';
+import { EASE } from '../utils/motion';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
+  // Opacity only — the route wrapper contains fixed elements (navbar,
+  // home bottom nav), and transforms/filters would re-anchor them.
   const pageVariants = {
-    initial: {
-      opacity: 0,
-      // x: "-100vw", // Example: Slide from left
-    },
-    in: {
-      opacity: 1,
-      // x: 0, // Example: Slide to center
-    },
-    out: {
-      opacity: 0,
-      // x: "100vw", // Example: Slide to right
-    }
-  };
-
-  const pageTransition = {
-    type: "tween", // Or "spring", "inertia"
-    ease: "anticipate", // Example easing
-    duration: 0.5 // Adjust duration as needed
+    initial: { opacity: 0 },
+    in: { opacity: 1, transition: { duration: 0.4, ease: EASE } },
+    out: { opacity: 0, transition: { duration: 0.18, ease: 'easeIn' } },
   };
   return (
     <ThemeProvider>
@@ -55,6 +43,7 @@ function MyApp({ Component, pageProps }) {
       />
       <AskSunProvider>
         <AnalyticsWrapper>
+          <MotionConfig reducedMotion="user">
           <AnimatePresence mode='wait'>
             <motion.div
                 key={router.route}
@@ -62,11 +51,11 @@ function MyApp({ Component, pageProps }) {
                 animate="in"
                 exit="out"
                 variants={pageVariants}
-                transition={pageTransition}
               >
               <Component {...pageProps} />
             </motion.div>
           </AnimatePresence>
+          </MotionConfig>
           <CommandPalette />
           <CustomCursor />
           <Analytics />

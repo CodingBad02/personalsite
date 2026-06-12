@@ -6,40 +6,40 @@ const ResumePDF = () => {
   const resumePath = '/Manjunathan%20Resume.pdf';
   
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 mb-8">
-      <h2 className="text-2xl font-bold mb-4 gradient-text">My Resume</h2>
-      
+    <div className="border border-[#191818]/12 bg-white/30 p-6 dark:border-white/10 dark:bg-white/[0.035]">
+      <p className="font-['JetBrains_Mono'] mb-4 text-xs text-[#191818]/45 dark:text-white/45">// resume.pdf</p>
+
       <div className="flex flex-col">
-        <p className="text-gray-600 dark:text-gray-400 mb-4">
-          Want to know more about my professional experience and skills? Feel free to view or download my resume.
+        <p className="mb-4 text-sm leading-7 text-[#191818]/64 dark:text-white/64">
+          Want to know more about my professional experience and skills? View or download my resume.
         </p>
-        
-        <div className="flex flex-wrap gap-3">
+
+        <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setIsPreviewOpen(true)}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-primary-light dark:bg-primary-dark text-white rounded-lg hover:opacity-90 transition-colors"
+            className="btn-wipe font-['JetBrains_Mono'] inline-flex items-center gap-2 bg-[#1b5def] px-3 py-2 text-xs text-white [--wipe:#143fae]"
           >
-            <FiEye className="h-5 w-5" />
-            View Resume
+            <FiEye className="h-4 w-4" />
+            View
           </button>
-          
+
           <a
             href={resumePath}
             download="Manjunathan_Radhakrishnan_Resume.pdf"
-            className="inline-flex items-center gap-2 px-4 py-2 border-2 border-primary-light dark:border-primary-dark text-primary-light dark:text-primary-dark rounded-lg hover:bg-primary-light hover:dark:bg-primary-dark hover:text-white hover:dark:text-white transition-colors"
+            className="font-['JetBrains_Mono'] inline-flex items-center gap-2 border border-[#191818]/20 px-3 py-2 text-xs transition-colors hover:border-[#1b5def] hover:text-[#1b5def] dark:border-white/15 dark:hover:border-[#7cb5ff] dark:hover:text-[#7cb5ff]"
           >
-            <FiDownload className="h-5 w-5" />
-            Download PDF
+            <FiDownload className="h-4 w-4" />
+            Download
           </a>
-          
+
           <a
             href={resumePath}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-700 transition-colors"
+            className="font-['JetBrains_Mono'] inline-flex items-center gap-2 border border-[#191818]/20 px-3 py-2 text-xs transition-colors hover:border-[#1b5def] hover:text-[#1b5def] dark:border-white/15 dark:hover:border-[#7cb5ff] dark:hover:text-[#7cb5ff]"
           >
-            <FiExternalLink className="h-5 w-5" />
-            Open in New Tab
+            <FiExternalLink className="h-4 w-4" />
+            Open
           </a>
         </div>
       </div>

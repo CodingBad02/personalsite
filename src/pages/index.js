@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import MainLayout from '../layouts/MainLayout';
 import HeroImageReveal from '../components/HeroImageReveal';
+import Magnetic from '../components/motion/Magnetic';
 import { FiArrowDown, FiArrowRight, FiChevronRight, FiGithub, FiLinkedin, FiMail, FiMusic } from 'react-icons/fi';
 
 const services = [
@@ -41,6 +42,8 @@ const products = [
     href: 'https://apps.apple.com/in/app/budhi-ai/id6755378258',
     tag: 'Second-memory app',
     image: '/images/budhi.png',
+    media: 'icon',
+    file: 'budhi.app',
     description: 'A memory layer for notes, files, and moments you do not want to lose.',
     stat: '1000+ downloads',
     tilt: '-rotate-[3deg]',
@@ -50,6 +53,8 @@ const products = [
     href: 'https://antz.ai/manufacturing/',
     tag: 'Decision intelligence',
     image: '/images/planr.png',
+    media: 'wordmark',
+    file: 'planr.ai',
     description: 'Turns messy ERP/WMS data into shortage signals, ranked actions, and what-if planning.',
     stat: 'Manufacturing AI',
     tilt: 'rotate-[2deg]',
@@ -59,6 +64,8 @@ const products = [
     href: '/blog/v-commerce-studio-gke-hackathon',
     tag: 'Agentic commerce',
     image: '/images/blog/Vcommerce-Logo.png',
+    media: 'cover',
+    file: 'vcommerce.demo',
     description: 'A hackathon build for agent-led shopping flows and product discovery.',
     stat: 'GKE hackathon',
     tilt: '-rotate-[1deg]',
@@ -335,12 +342,16 @@ const IndexPage = () => {
                   </motion.div>
 
                   <motion.div variants={fadeUp} custom={0.4} className="mt-9 flex flex-wrap gap-4">
-                    <button onClick={() => scrollTo('services')} className={`${mono} inline-flex items-center gap-2 bg-[#1b5def] px-6 py-4 text-sm text-white transition-transform hover:-translate-y-0.5`}>
-                      How I work <FiArrowRight />
-                    </button>
-                    <Link href="/projects" className={`${mono} inline-flex items-center gap-2 border border-[#191818]/30 bg-white/25 px-6 py-4 text-sm text-[#191818] transition-colors hover:border-[#1b5def] hover:text-[#1b5def] dark:border-white/20 dark:bg-white/5 dark:text-white dark:hover:border-[#7cb5ff] dark:hover:text-[#7cb5ff]`}>
-                      Case studies
-                    </Link>
+                    <Magnetic>
+                      <button onClick={() => scrollTo('services')} className={`${mono} btn-wipe group inline-flex items-center gap-2 bg-[#1b5def] px-6 py-4 text-sm text-white [--wipe:#143fae]`}>
+                        How I work <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+                      </button>
+                    </Magnetic>
+                    <Magnetic strength={0.2}>
+                      <Link href="/projects" className={`${mono} inline-flex items-center gap-2 border border-[#191818]/30 bg-white/25 px-6 py-4 text-sm text-[#191818] transition-colors hover:border-[#1b5def] hover:text-[#1b5def] dark:border-white/20 dark:bg-white/5 dark:text-white dark:hover:border-[#7cb5ff] dark:hover:text-[#7cb5ff]`}>
+                        Case studies
+                      </Link>
+                    </Magnetic>
                   </motion.div>
                 </motion.div>
 
@@ -443,8 +454,19 @@ const IndexPage = () => {
                       <span>{p.tag}</span>
                       <span>[0{ i + 1 }]</span>
                     </div>
-                    <div className="product-logo-stage">
-                      <img src={p.image} alt={`${p.title} logo`} className={`product-logo ${p.title === 'Planr AI' ? 'product-logo--wide' : ''} ${p.title === 'V-Commerce Studio' ? 'product-logo--media' : ''}`} />
+                    <div className="product-stage">
+                      <div className={`${mono} product-stage-bar`}>
+                        <span className="product-stage-dots" aria-hidden="true"><i /><i /><i /></span>
+                        <span>{p.file}</span>
+                        <span className="ml-auto text-[#1b5def] dark:text-[#7cb5ff]">●</span>
+                      </div>
+                      <div className={`product-stage-body ${p.media === 'cover' ? 'product-stage-body--cover' : ''}`}>
+                        {p.media === 'cover' ? (
+                          <img src={p.image} alt={`${p.title} preview`} loading="lazy" decoding="async" className="product-cover" />
+                        ) : (
+                          <img src={p.image} alt={`${p.title} logo`} loading="lazy" decoding="async" className={`product-mark product-mark--${p.media}`} />
+                        )}
+                      </div>
                     </div>
                     <div>
                       <div className="mb-4 flex items-end justify-between gap-4">
@@ -499,12 +521,16 @@ const IndexPage = () => {
                 If you are building something useful with AI and want a second brain on the hard parts, write to me.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <a href="mailto:manjunathan.ai02@gmail.com" className={`${mono} inline-flex items-center gap-2 bg-[#191818] px-6 py-4 text-sm text-[#f4f4f4] transition-colors hover:bg-[#1b5def]`}>
-                  <FiMail /> Get in touch
-                </a>
-                <a href="https://linkedin.com/in/manjunathan-r-06396b1b7/" target="_blank" rel="noopener noreferrer" className={`${mono} inline-flex items-center gap-2 border border-[#191818]/20 px-6 py-4 text-sm transition-colors hover:border-[#1b5def]/50 hover:text-[#1b5def] dark:border-white/20 dark:hover:border-[#7cb5ff]/60 dark:hover:text-[#7cb5ff]`}>
-                  <FiLinkedin /> LinkedIn
-                </a>
+                <Magnetic>
+                  <a href="mailto:manjunathan.ai02@gmail.com" className={`${mono} btn-wipe inline-flex items-center gap-2 bg-[#191818] px-6 py-4 text-sm text-[#f4f4f4]`}>
+                    <FiMail /> Get in touch
+                  </a>
+                </Magnetic>
+                <Magnetic strength={0.2}>
+                  <a href="https://linkedin.com/in/manjunathan-r-06396b1b7/" target="_blank" rel="noopener noreferrer" className={`${mono} inline-flex items-center gap-2 border border-[#191818]/20 px-6 py-4 text-sm transition-colors hover:border-[#1b5def]/50 hover:text-[#1b5def] dark:border-white/20 dark:hover:border-[#7cb5ff]/60 dark:hover:text-[#7cb5ff]`}>
+                    <FiLinkedin /> LinkedIn
+                  </a>
+                </Magnetic>
               </div>
             </section>
           </div>

@@ -5,6 +5,7 @@ import MainLayout from '../layouts/MainLayout';
 import ContactForm from '../components/ContactForm';
 import { TextRevealCard, TextRevealCardTitle, TextRevealCardDescription } from '../components/TextRevealCard';
 import { EncryptedText } from '../components/EncryptedText';
+import Reveal from '../components/motion/Reveal';
 import { FiArrowRight, FiCalendar, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 
 const mono = "font-['JetBrains_Mono']";
@@ -88,26 +89,27 @@ const Contact = () => (
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            {channels.map((channel) => {
+            {channels.map((channel, index) => {
               const Icon = channel.icon;
               const external = channel.href.startsWith('http');
               return (
-                <a
-                  key={channel.label}
-                  href={channel.href}
-                  target={external ? '_blank' : undefined}
-                  rel={external ? 'noopener noreferrer' : undefined}
-                  className="contact-channel group relative overflow-hidden border border-[#191818]/12 bg-white/30 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#1b5def]/50 dark:border-white/10 dark:bg-white/[0.035] dark:hover:border-[#7cb5ff]/50"
-                >
-                  <span className="mb-8 flex h-10 w-10 items-center justify-center border border-[#191818]/12 text-[#1b5def] dark:border-white/10 dark:text-[#7cb5ff]">
-                    <Icon className="h-4 w-4" />
-                  </span>
-                  <span className={`${mono} block text-xs text-[#191818]/45 dark:text-white/45`}>{channel.label}</span>
-                  <span className="mt-2 flex items-center justify-between gap-4 text-lg font-medium">
-                    {channel.value}
-                    <FiArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </a>
+                <Reveal key={channel.label} delay={index * 0.07} className="h-full">
+                  <a
+                    href={channel.href}
+                    target={external ? '_blank' : undefined}
+                    rel={external ? 'noopener noreferrer' : undefined}
+                    className="contact-channel group relative block h-full overflow-hidden border border-[#191818]/12 bg-white/30 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#1b5def]/50 dark:border-white/10 dark:bg-white/[0.035] dark:hover:border-[#7cb5ff]/50"
+                  >
+                    <span className="mb-8 flex h-10 w-10 items-center justify-center border border-[#191818]/12 text-[#1b5def] transition-all duration-300 group-hover:border-[#1b5def]/50 group-hover:bg-[#1b5def] group-hover:text-white dark:border-white/10 dark:text-[#7cb5ff] dark:group-hover:bg-[#7cb5ff] dark:group-hover:text-[#08090f]">
+                      <Icon className="h-4 w-4" />
+                    </span>
+                    <span className={`${mono} block text-xs text-[#191818]/45 dark:text-white/45`}>{channel.label}</span>
+                    <span className="mt-2 flex items-center justify-between gap-4 text-lg font-medium">
+                      {channel.value}
+                      <FiArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </a>
+                </Reveal>
               );
             })}
           </div>
@@ -123,13 +125,15 @@ const Contact = () => (
 
           <div className="space-y-4">
             {steps.map((step, index) => (
-              <div key={step.title} className="contact-step grid gap-4 border border-[#191818]/12 bg-white/20 p-5 dark:border-white/10 dark:bg-white/[0.025] md:grid-cols-[72px_1fr]">
-                <span className={`${mono} text-sm text-[#1b5def] dark:text-[#7cb5ff]`}>0{index + 1}</span>
-                <div>
-                  <h3 className="mb-2 text-2xl font-semibold">{step.title}</h3>
-                  <p className="leading-7 text-[#191818]/64 dark:text-white/64">{step.text}</p>
+              <Reveal key={step.title} delay={index * 0.08}>
+                <div className="contact-step grid gap-4 border border-[#191818]/12 bg-white/20 p-5 transition-colors duration-300 hover:border-[#1b5def]/40 dark:border-white/10 dark:bg-white/[0.025] dark:hover:border-[#7cb5ff]/40 md:grid-cols-[72px_1fr]">
+                  <span className={`${mono} text-sm text-[#1b5def] dark:text-[#7cb5ff]`}>0{index + 1}</span>
+                  <div>
+                    <h3 className="mb-2 text-2xl font-semibold">{step.title}</h3>
+                    <p className="leading-7 text-[#191818]/64 dark:text-white/64">{step.text}</p>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </section>

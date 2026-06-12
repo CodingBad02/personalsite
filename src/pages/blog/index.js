@@ -46,7 +46,7 @@ const BlogIndex = ({ posts }) => {
                 The ones worth starting with.
               </SectionHead>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {pinned.map((post) => <BlogCard key={post.slug} post={post} />)}
+                {pinned.map((post, i) => <BlogCard key={post.slug} post={post} index={i} />)}
               </div>
             </section>
           )}
@@ -62,7 +62,7 @@ const BlogIndex = ({ posts }) => {
                 Everything else, newest first.
               </SectionHead>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {regular.map((post) => <BlogCard key={post.slug} post={post} />)}
+                {regular.map((post, i) => <BlogCard key={post.slug} post={post} index={i} />)}
               </div>
             </section>
           )}
