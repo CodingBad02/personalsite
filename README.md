@@ -4,4 +4,4 @@ This contains the HTML and thew CSS code which  I used to structure my website a
 Working on using JS to amplify this **attempt at a personal Website** and constant commits
 
 I use the **Atom text editor for compiling and VSCode for testing out** 
-Website is currently deployed at [manjunathan.me](https://manjunathan.me/)
+Website is currently deployed at [manjunathan.dev](https://manjunathan.dev/)
